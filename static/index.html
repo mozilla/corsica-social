@@ -3,10 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    <style>
+      pre {
+        max-width: 700px;
+        white-space: pre-wrap;
+      }
+    </style>
   </head>
   <body>
-    <h1>Manifest for provider</h1>
-    <pre></pre>
+    <h1>Corsica Social Provider for Firefox</h1>
+    <ol>
+      <li>
+        Create an about:config key with the name <code>social.manifest.corsica-social.herokuapp.com</code> and the value:
+        <pre></pre>
+      </li>
+      <li>
+        Add <code>"http://corsica-social.herokuapp.com":1</code> to the key <code>social.activeProviders</code>
+      </li>
+      <li>
+        Restart Firefox.
+      </li>
+    </ol>
     <script>
 
       var baseurl = location.origin;
@@ -35,14 +52,14 @@
       document.querySelector('pre').innerHTML = JSON.stringify(manifest);
 
 
-      document.body.innerHTML += '<button>install</button>';
-      document.querySelector('button').addEventListener('click', function (e) {
-        var node = e.target;
-        console.log(baseurl, location.origin);
-        var event = new CustomEvent("ActivateSocialFeature");
-        node.setAttribute("data-service", JSON.stringify(manifest));
-        node.dispatchEvent(event);
-      });
+      // document.body.innerHTML += '<button>install</button>';
+      // document.querySelector('button').addEventListener('click', function (e) {
+      //   var node = e.target;
+      //   console.log(baseurl, location.origin);
+      //   var event = new CustomEvent("ActivateSocialFeature");
+      //   node.setAttribute("data-service", JSON.stringify(manifest));
+      //   node.dispatchEvent(event);
+      // });
     </script>
   </body>
 </html>
