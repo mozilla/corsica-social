@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <script>
+
+
+      document.body.innerHTML += '<button>install</button>';
+      document.querySelector('button').addEventListener('click', function (e) {
+        var node = e.target;
+        var baseurl = location.origin;
+        console.log(baseurl, location.origin);
+        var event = new CustomEvent("ActivateSocialFeature");
+        node.setAttribute("data-service", JSON.stringify({
+          // currently required
+          "name": "Corsica",
+          "iconURL": baseurl+"/corsica-16.png",
+          "icon32URL": baseurl+"/corsica-32.png",
+          "markedIcon": baseurl+"/corsica-32.png",
+          "unmarkedIcon": baseurl+"/corsica-32.png",
+          "icon64URL": baseurl+"/corsica-64.png",
+
+          "markURL": baseurl+"/mark.html?url=%{url}&title=%{title}",
+
+          // should be available for display purposes
+          "description": "This is only a test.",
+          "author": "Potch",
+          "homepageURL": "https://potch.me/",
+
+          "origin": baseurl,
+
+          // optional
+          "version": "1.2"
+        }));
+        node.dispatchEvent(event);
+      });
+    </script>
+  </body>
+</html>
