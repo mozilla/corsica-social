@@ -17,7 +17,10 @@
         background: #f8f8f8;
       }
       code {
-        margin: -2px;
+        margin: -2px 0;
+      }
+      button {
+        font: inherit;
       }
     </style>
   </head>
@@ -35,6 +38,7 @@
         Restart Firefox.
       </li>
     </ol>
+    <h2>Or, just click <button>this button</button></h2>
     <script>
 
       var baseurl = location.origin;
@@ -62,15 +66,13 @@
 
       document.querySelector('pre').innerHTML = JSON.stringify(manifest);
 
-
-      // document.body.innerHTML += '<button>install</button>';
-      // document.querySelector('button').addEventListener('click', function (e) {
-      //   var node = e.target;
-      //   console.log(baseurl, location.origin);
-      //   var event = new CustomEvent("ActivateSocialFeature");
-      //   node.setAttribute("data-service", JSON.stringify(manifest));
-      //   node.dispatchEvent(event);
-      // });
+      document.querySelector('button').addEventListener('click', function (e) {
+        var node = e.target;
+        console.log(baseurl, location.origin);
+        var event = new CustomEvent("ActivateSocialFeature");
+        node.setAttribute("data-service", JSON.stringify(manifest));
+        node.dispatchEvent(event);
+      });
     </script>
   </body>
 </html>
